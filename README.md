@@ -44,24 +44,25 @@ Ground Truth Expansion (Algorithm 4):
 * Dynamically populates acceptable answer aliases (e.g., expanding "United States" to {"usa", "u.s.", "america"}), ensuring fair scoring for generative outputs.
 
 ### Performance Highlights
-Phase 1: Semantic Search Results (Test Set)
-Model	Strategy	Hit@1	Hit@3	Hit@5	MRR@10
-all-MiniLM-L6-v2	CSP	0.6010	0.8185	0.8910	0.7212
-all-MiniLM-L6-v2	MNR	0.6105	0.8450	0.9140	0.7386
-F2LLM-v2-80M	CSP	0.5615	0.8005	0.8745	0.6937
-F2LLM-v2-80M	MNR	0.5905	0.8170	0.8970	0.7205
+##### Phase 1: Semantic Search Results (Test Set)
+| Model	Strategy | Hit@1 | Hit@3 | Hit@5 |MRR@10
+|----------------|------|------|------|------|
+| all-MiniLM-L6-v2 (CSP) | 0.6010 |	0.8185 | 0.8910 |	0.7212 |
+| all-MiniLM-L6-v2 (MNR) | 0.6105 | 0.8450 | 0.9140 | 0.7386 |
+| F2LLM-v2-80M (CSP) | 0.5615 |	0.8005 | 0.8745 |	0.6937 |
+| F2LLM-v2-80M (MNR) | 0.5905 | 0.8170 | 0.8970 | 0.7205 |
 
-Phase 2: Generative QA & RAG Pipeline (2000-Query Test Set)
-Model	Pipeline	Standard EM	Wikidata EM	Standard subEM	Wikidata subEM	METEOR (WD)
-FLAN-T5-large	Baseline	0.0245	0.0280	0.0350	0.0495	0.0717
-FLAN-T5-large	RAG	0.3475	0.3785	0.4505	0.5200	0.4873
-FLAN-T5-large	Oracle	0.4490	0.4250	0.5435	0.6005	0.5547
-LLaMA-3.2-1B	RAG	0.0595	0.0670	0.3525	0.4410	0.2929
+##### Phase 2: Generative QA & RAG Pipeline (2000-Query Test Set)
+|Model	Pipeline |	Standard EM |	Wikidata EM | Standard subEM | Wikidata subEM | METEOR (WD)
+|----------------|------|------|------|------|------|
+|FLAN-T5-large (Baseline) |	0.0245 |	0.0280 |	0.0350 |	0.0495 |	0.0717 |
+|FLAN-T5-large (RAG) |	0.3475 |	0.3785 |	0.4505 |	0.5200 |	0.4873 |
+|FLAN-T5-large (Oracle) |	0.4490 |	0.4250 |	0.5435 |	0.6005 |	0.5547 |
+|LLaMA-3.2-1B	(RAG) |	0.0595 |	0.0670 |	0.3525 | 0.4410 |	0.2929 |
 
-Human vs. LLM-as-a-Judge Agreement: Mistral-7B-v0.3 achieved an average correctness score of 0.7480 vs. 0.7440 by human annotators, yielding a Cohen's Kappa of 0.6728.
+**Human vs. LLM-as-a-Judge Agreement:** Mistral-7B-v0.3 achieved an average correctness score of 0.7480 vs. 0.7440 by human annotators, yielding a Cohen's Kappa of 0.6728.
 
 ### Colab Notebooks
-Both experiments are fully reproducible on the two .ipynb notebooks in the repository.
-
+Both experiments are fully reproducible on the two notebooks in the repository:
 Phase 1: mnlp2026_hw1.ipynb
 Phase 2: mnlp2026_hw2.ipynb
